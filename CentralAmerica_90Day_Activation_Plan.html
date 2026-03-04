@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central America Activation Plan — TapTapSend | Manuel Figueroa</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --navy: #0f1b2d;
+    --navy2: #162236;
+    --navy3: #1e2f47;
+    --green: #34d399;
+    --green2: #10b981;
+    --green3: #059669;
+    --gold: #f59e0b;
+    --red: #f87171;
+    --blue: #60a5fa;
+    --purple: #a78bfa;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: rgba(52,211,153,0.15);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, #0a1628 0%, #162236 50%, #0f2a1a 100%);
+    border-bottom: 2px solid var(--green);
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(52,211,153,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-label {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .page-header h1 {
+    font-size: 36px;
+    font-weight: normal;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .page-header h1 span { color: var(--green); }
+  .header-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-chip {
+    background: rgba(52,211,153,0.1);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    color: var(--green);
+  }
+
+  /* ── NAV ── */
+  .toc {
+    background: var(--navy2);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 48px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    padding: 4px 10px;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+  .toc a:hover { color: var(--green); background: rgba(52,211,153,0.08); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 48px 80px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 60px 0 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  section:last-child { border-bottom: none; }
+  .section-label {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  section h2 {
+    font-size: 26px;
+    font-weight: normal;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  section h3 {
+    font-size: 17px;
+    font-weight: normal;
+    color: var(--green);
+    margin: 28px 0 12px;
+  }
+  p { color: var(--muted); margin-bottom: 14px; }
+  p strong { color: var(--text); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: rgba(52,211,153,0.07);
+    border-left: 3px solid var(--green);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .callout-title { color: var(--green); font-size: 12px; letter-spacing: 2px; font-family: 'Courier New', monospace; text-transform: uppercase; margin-bottom: 8px; }
+  .callout p { margin: 0; color: var(--text); font-size: 14px; }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 24px 0; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px;
+  }
+  .card-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .card-value {
+    font-size: 28px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .card-sub { font-size: 12px; color: var(--muted); }
+  .card h4 { color: var(--text); font-size: 14px; margin-bottom: 8px; }
+  .card p { font-size: 13px; margin-bottom: 0; }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .stat-box {
+    background: var(--navy3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 20px;
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+  }
+  .stat-box .num { font-size: 26px; color: var(--green); }
+  .stat-box .lbl { font-size: 11px; color: var(--muted); font-family: 'Courier New', monospace; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* ── CHART CONTAINERS ── */
+  .chart-wrap {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .chart-title {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  canvas { display: block; }
+
+  /* ── PHASE TIMELINE ── */
+  .phase-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 32px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .phase-block {
+    padding: 24px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .phase-block:last-child { border-right: none; }
+  .phase-block.p1 { background: rgba(96,165,250,0.06); }
+  .phase-block.p2 { background: rgba(167,139,250,0.06); }
+  .phase-block.p3 { background: rgba(52,211,153,0.06); }
+  .phase-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .p1 .phase-tag { color: var(--blue); }
+  .p2 .phase-tag { color: var(--purple); }
+  .p3 .phase-tag { color: var(--green); }
+  .phase-block h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    color: #fff;
+  }
+  .p1 h3 { border-bottom: 2px solid var(--blue); padding-bottom: 8px; }
+  .p2 h3 { border-bottom: 2px solid var(--purple); padding-bottom: 8px; }
+  .p3 h3 { border-bottom: 2px solid var(--green); padding-bottom: 8px; }
+  .task-list { list-style: none; }
+  .task-list li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding-left: 16px;
+    position: relative;
+  }
+  .task-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .task-list li strong { color: var(--text); }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  thead th {
+    background: var(--navy3);
+    color: var(--green);
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--muted);
+    vertical-align: top;
+  }
+  tbody td strong { color: var(--text); }
+  tbody tr:hover { background: rgba(52,211,153,0.03); }
+  tbody tr.highlight td { background: rgba(52,211,153,0.07); color: var(--text); }
+  tbody tr.highlight td strong { color: var(--green); }
+
+  /* ── FUNNEL ── */
+  .funnel {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .funnel-step {
+    border-radius: 4px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .funnel-step .f-label { font-size: 13px; color: var(--text); }
+  .funnel-step .f-num { font-family: 'Courier New', monospace; font-size: 14px; color: var(--green); }
+  .funnel-step .f-rate { font-size: 11px; color: var(--muted); }
+
+  /* ── KPI TABLE ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .kpi-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+  }
+  .kpi-card .phase-badge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  .badge-d30 { background: rgba(96,165,250,0.15); color: var(--blue); }
+  .badge-d60 { background: rgba(167,139,250,0.15); color: var(--purple); }
+  .badge-d90 { background: rgba(52,211,153,0.15); color: var(--green); }
+  .kpi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .kpi-row:last-child { border-bottom: none; }
+  .kpi-row .k-name { font-size: 12px; color: var(--muted); }
+  .kpi-row .k-val { font-size: 13px; color: var(--text); font-family: 'Courier New', monospace; }
+  .kpi-row .k-val.green { color: var(--green); }
+  .kpi-row .k-val.gold { color: var(--gold); }
+
+  /* ── SCENARIO TABLE ── */
+  .scenario-table { margin: 24px 0; }
+  .scenario-header {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 0;
+    background: var(--navy3);
+    border-radius: 6px 6px 0 0;
+    padding: 10px 16px;
+  }
+  .scenario-header span {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .scenario-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 0;
+    padding: 12px 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-top: none;
+    align-items: center;
+  }
+  .scenario-row:last-child { border-radius: 0 0 6px 6px; }
+  .scenario-row .metric { font-size: 13px; color: var(--text); }
+  .scenario-row .bear { color: var(--red); font-size: 13px; }
+  .scenario-row .base { color: var(--gold); font-size: 13px; }
+  .scenario-row .bull { color: var(--green); font-size: 13px; }
+  .scenario-row.alt { background: rgba(255,255,255,0.02); }
+
+  /* ── WATERFALL ── */
+  .waterfall-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .waterfall-labels span {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ── RISK TABLE ── */
+  .risk-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2.5fr;
+    gap: 0;
+    padding: 10px 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-top: none;
+    align-items: start;
+  }
+  .risk-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 2.5fr;
+    background: var(--navy3);
+    border-radius: 6px 6px 0 0;
+    padding: 10px 16px;
+  }
+  .risk-header span { font-family: 'Courier New', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
+  .risk-row .r-risk { font-size: 13px; color: var(--text); }
+  .risk-row .r-prob { font-size: 12px; }
+  .risk-row .r-impact { font-size: 12px; }
+  .risk-row .r-mit { font-size: 12px; color: var(--muted); }
+  .high { color: var(--red); }
+  .med { color: var(--gold); }
+  .low { color: var(--green); }
+
+  /* ── AUTHOR FOOTER ── */
+  .doc-footer {
+    margin-top: 60px;
+    padding: 28px;
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .doc-footer .author { color: var(--text); font-size: 14px; }
+  .doc-footer .author span { color: var(--green); }
+  .doc-footer .date { color: var(--muted); font-size: 12px; font-family: 'Courier New', monospace; }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 20px 60px; }
+    .page-header { padding: 36px 20px 32px; }
+    .toc { padding: 12px 20px; }
+    .grid-2, .grid-3, .grid-4, .kpi-grid { grid-template-columns: 1fr; }
+    .phase-timeline { grid-template-columns: 1fr; }
+    .phase-block { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<div class="page-header">
+  <div class="header-label">TapTapSend · Head of Central America Growth</div>
+  <h1>Central America <span>Activation Plan</span></h1>
+  <div class="header-sub">What I'd build in the first 90 days · GTM & CAC Strategy · TAM/SAM/SOM · Unit Economics · KPI Framework</div>
+  <div class="header-meta">
+    <span class="meta-chip">Prepared by: Manuel Figueroa</span>
+    <span class="meta-chip">Focus: El Salvador · Guatemala · Honduras</span>
+    <span class="meta-chip">Horizon: 90 Days + 12-Month Roadmap</span>
+    <span class="meta-chip">Date: March 2026</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="toc">
+  <a href="#framing">00 · Framing</a>
+  <a href="#market">01 · Market Sizing</a>
+  <a href="#gtm">02 · GTM Strategy</a>
+  <a href="#cac">03 · CAC/LTV</a>
+  <a href="#90days">04 · 90-Day Plan</a>
+  <a href="#kpis">05 · KPI Dashboard</a>
+  <a href="#scenarios">06 · Scenarios</a>
+  <a href="#risk">07 · Risk Register</a>
+</nav>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════
+     SECTION 00 · FRAMING
+══════════════════════════════════════ -->
+<section id="framing">
+  <div class="section-label">00 · Strategic Framing</div>
+  <h2>This Is Activation, Not Entry</h2>
+
+  <div class="callout">
+    <div class="callout-title">The Role I'm Proposing</div>
+    <p>When Saad asked what role I'd build, I said: the person responsible for growing Central America. Not GM of LatAm — that's a different job. This is a focused growth mandate: own El Salvador, Guatemala, and Honduras, prove the unit economics, build the community-led GTM playbook, and earn the expanded mandate. TapTapSend already holds 48 US state licenses and is live in all three markets. The infrastructure exists. The question is why the volume isn't there — and how to fix it.</p>
+  </div>
+
+  <p>Central America's remittance corridor is the most structurally underpenetrated segment in TapTapSend's licensed universe. <strong>The US sends ~$30B annually to El Salvador, Guatemala, and Honduras combined</strong> — roughly 40% of all US-to-LatAm flows — yet digital penetration lags behind Mexico by 8–10 percentage points. The three reasons: distribution is still grocery/corner store, trust is fragmented, and incumbents (Western Union, MoneyGram) hold community-level relationships that fintech apps have not replicated.</p>
+
+  <p>I grew up in those community channels. My father sent money to El Salvador at the Western Union counter at the grocery store. I still send to my grandmother in a rural town outside San Salvador today. The trust and distribution gap in this corridor is not abstract to me — it's the thing I'd be uniquely positioned to close. Below is how I would do it in 90 days.</p>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="num">$30B</div><div class="lbl">US→CA Annual Remittances</div></div>
+    <div class="stat-box"><div class="num">23.5%</div><div class="lbl">Remittances / El Salvador GDP</div></div>
+    <div class="stat-box"><div class="num">~15%</div><div class="lbl">Digital Penetration (CA3)</div></div>
+    <div class="stat-box"><div class="num">3%</div><div class="lbl">Recipients Keeping $ in Account</div></div>
+    <div class="stat-box"><div class="num">$0</div><div class="lbl">TapTapSend Paid Media Spend (CA3, est.)</div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 01 · MARKET SIZING
+══════════════════════════════════════ -->
+<section id="market">
+  <div class="section-label">01 · Market Sizing</div>
+  <h2>TAM / SAM / SOM — Central America Focus</h2>
+
+  <p>Market sizing is built bottom-up from World Bank / IDB remittance flow data (2024), adjusted for digital penetration rates and a conservative 1% take rate on gross transaction volume (TapTapSend's approximate blended pricing position vs. 5–8% legacy players).</p>
+
+  <h3>TAM — Total Addressable Market</h3>
+  <p>All remittance flows from US diaspora to El Salvador, Guatemala, and Honduras — regardless of channel (cash, digital, informal).</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">El Salvador TAM</div>
+      <div class="card-value">$8.2B</div>
+      <div class="card-sub">Gross annual flows (2024) · 23.5% of GDP · ~97% US-origin</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Guatemala TAM</div>
+      <div class="card-value">$21.8B</div>
+      <div class="card-sub">Largest CA corridor · 19.3% of GDP · Fastest growing (+14% YoY)</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Honduras TAM</div>
+      <div class="card-value">$9.3B</div>
+      <div class="card-sub">~28% of GDP · Heavily US-dependent · High rural concentration</div>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">TAM Breakdown — US→CA Remittances ($B, 2024)</div>
+    <canvas id="tamChart" height="90"></canvas>
+  </div>
+
+  <h3>SAM — Serviceable Addressable Market</h3>
+  <p>Digital-channel addressable flows at TapTapSend's licensed footprint. Assumes 15–25% digital penetration growth over 3 years, filtered for flows where TapTapSend has payout rail coverage (bank deposit, mobile wallet, cash pickup). Take rate applied at ~1% of GTV to derive revenue SAM.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Corridor</th>
+        <th>Gross Flow ($B)</th>
+        <th>Digital Pen. Now</th>
+        <th>Digital Pen. 2027E</th>
+        <th>Addressable GTV ($B)</th>
+        <th>Revenue SAM @ 1% TR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Guatemala</strong></td>
+        <td>$21.8B</td>
+        <td>14%</td>
+        <td>25%</td>
+        <td>$5.45B</td>
+        <td>$54.5M</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>El Salvador</strong></td>
+        <td>$8.2B</td>
+        <td>18%</td>
+        <td>30%</td>
+        <td>$2.46B</td>
+        <td>$24.6M</td>
+      </tr>
+      <tr>
+        <td><strong>Honduras</strong></td>
+        <td>$9.3B</td>
+        <td>12%</td>
+        <td>22%</td>
+        <td>$2.05B</td>
+        <td>$20.5M</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Total CA3</strong></td>
+        <td><strong>$39.3B</strong></td>
+        <td><strong>14.6%</strong></td>
+        <td><strong>25.7%</strong></td>
+        <td><strong>$9.96B</strong></td>
+        <td><strong>$99.6M</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>SOM — Serviceable Obtainable Market (90-Day + 12-Month)</h3>
+  <p>Conservative capture assumption: 0.5–1.5% market share of digital SAM by end of year 1, scaling to 3–5% by end of year 2 if neobank/card layer is activated. SOM is modeled in three scenarios (detailed in Section 06).</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">SOM Build — Revenue Ramp ($M, Bear / Base / Bull)</div>
+    <canvas id="somChart" height="110"></canvas>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Why El Salvador First</div>
+    <p>Smallest absolute TAM of the three, but highest GDP concentration (23.5%), dollarized economy (no FX risk), highest institutional trust in digital channels (post-Chivo wallet adoption), and my primary field research corridor. The trust-building playbook proven here is portable to Guatemala and Honduras.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 02 · GTM STRATEGY
+══════════════════════════════════════ -->
+<section id="gtm">
+  <div class="section-label">02 · Go-to-Market Strategy</div>
+  <h2>GTM Framework: Sender-First, Community-Activated</h2>
+
+  <p>The conventional fintech GTM for remittances is digital-first, performance-marketing-driven: Facebook/Instagram ads, app store optimization, referral codes. This works in urban corridors with high smartphone penetration. It does not work as the primary channel for Central American diaspora, where: (a) senders skew 30–55, lower digital nativity, (b) the trusted transaction venue is still the grocery store or Walmart Money Center, and (c) word-of-mouth from a trusted community member is worth 10x any digital ad impression.</p>
+
+  <p>The GTM strategy runs two parallel tracks.</p>
+
+  <h3>Track 1: Sender-Side Activation (US Diaspora Communities)</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Community Anchor Partnerships</h4>
+      <p>Partner with 5–10 high-trust institutions in top sender metros (LA, Houston, DC/MD/VA, NYC, Dallas) — Salvadoran community organizations (e.g., CARECEN), Guatemalan hometown associations (HTAs), Honduran mutual aid networks. Provide co-branded collateral, in-person activation events, and referral economics shared with the organization.</p>
+    </div>
+    <div class="card">
+      <h4>Latino Grocery Store Network</h4>
+      <p>Negotiate placement agreements with 50–100 independent Latino grocery stores in top-10 sender metros. QR code at checkout, in-store signage, staff incentive ($2–3 per first-time sender activated). This replicates the Western Union placement model at 1/10th the cost and with a trusted community endorsement baked in.</p>
+    </div>
+    <div class="card">
+      <h4>Church & Religious Network</h4>
+      <p>Catholic parishes with Salvadoran/Guatemalan/Honduran congregations are the most trusted institution in diaspora communities. Bulletin inserts, post-Mass activation tables, clergy endorsement. Pilot in 10 parishes in LA and Houston in Days 1–30.</p>
+    </div>
+    <div class="card">
+      <h4>Diaspora Creator Program</h4>
+      <p>Identify 20–40 micro-influencers (5K–50K followers) from the Salvadoran, Guatemalan, and Honduran diaspora on TikTok/Instagram/YouTube. Performance-based: $50 flat + $10 per first-time send. Target CPA $25–35, with community authenticity that paid ads cannot replicate.</p>
+    </div>
+  </div>
+
+  <h3>Track 2: Recipient-Side Activation (CA3 Markets)</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Payout Rail Optimization</h4>
+      <p>Within 30 days: audit and expand payout options in El Salvador (Banco Agrícola, Davivienda, BAC Credomatic) and Guatemala (Banrural, G&T Continental). Target: 85%+ of recipients can receive via their primary institution. Mobile wallet integration (Tigo Money, Claro Pay) for rural coverage where bank penetration drops to 15–20%.</p>
+    </div>
+    <div class="card">
+      <h4>Recipient Notification & App Download Loop</h4>
+      <p>When a recipient receives their first transfer via TapTapSend, trigger a WhatsApp message (primary communication channel in CA3) with transfer confirmation + link to recipient-facing app. Offer: "Check your balance, get notified instantly, and share TapTapSend with your sender." This seeds the reverse referral loop.</p>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">GTM Channel Mix — Target CAC & Volume Contribution (Year 1)</div>
+    <canvas id="channelChart" height="100"></canvas>
+  </div>
+
+  <h3>Sequencing Logic</h3>
+  <p>El Salvador activates first (Days 1–45): dollarized, highest trust in digital post-Chivo, my field research base. Guatemala activates second (Days 46–75): largest absolute TAM, higher volume ceiling, more distribution complexity. Honduras activates third (Days 76–90 scoping, Month 4+ execution): highest rural concentration, requires mobile wallet-first approach, longer timeline.</p>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 03 · CAC / LTV
+══════════════════════════════════════ -->
+<section id="cac">
+  <div class="section-label">03 · Unit Economics</div>
+  <h2>CAC / LTV / Targeted Returns</h2>
+
+  <p>Unit economics for this strategy are modeled at the channel level (different CAC profiles) and the cohort level (LTV built from average frequency × average transfer size × take rate × 36-month retention). The neobank/card layer is modeled separately as an LTV multiplier applied to the subset of recipients who convert.</p>
+
+  <h3>CAC by Channel</h3>
+
+  <div class="chart-wrap">
+    <div class="chart-title">CAC by Acquisition Channel ($) — Target Ranges</div>
+    <canvas id="cacChart" height="90"></canvas>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Channel</th><th>Target CAC</th><th>Volume (Year 1)</th><th>Quality Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Community referral / word-of-mouth</strong></td>
+        <td>$8–15</td>
+        <td>30% of new users</td>
+        <td>Highest LTV cohort; 18-month retention ~65%</td>
+      </tr>
+      <tr>
+        <td><strong>Grocery store / in-person</strong></td>
+        <td>$15–25</td>
+        <td>25% of new users</td>
+        <td>Older demographic; high frequency, lower digital engagement</td>
+      </tr>
+      <tr>
+        <td><strong>Diaspora creator / micro-influencer</strong></td>
+        <td>$25–35</td>
+        <td>20% of new users</td>
+        <td>Younger, higher digital; good 2nd-send rate</td>
+      </tr>
+      <tr>
+        <td><strong>Church / community org partnership</strong></td>
+        <td>$10–20</td>
+        <td>15% of new users</td>
+        <td>Highest trust signal; monthly send correlation strong</td>
+      </tr>
+      <tr>
+        <td><strong>Paid performance (Meta/Google)</strong></td>
+        <td>$35–60</td>
+        <td>10% of new users</td>
+        <td>Lowest LTV cohort; use only for retargeting of warm audiences</td>
+      </tr>
+      <tr class="highlight">
+        <td><strong>Blended Average</strong></td>
+        <td><strong>$18–28</strong></td>
+        <td><strong>100%</strong></td>
+        <td><strong>Target: &lt;$25 blended by end of Q2</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>LTV Model — Remittance Core + Neobank Layer</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Remittance-Only LTV (36 months)</div>
+      <div class="card-value">$185–$310</div>
+      <div class="card-sub">Inputs: 8–10 transfers/yr · $180–220 avg · 1% take rate · 70–75% 36-mo retention</div>
+      <br/>
+      <p style="font-size:12px;">At blended CAC $18–28: <strong style="color:var(--green);">LTV:CAC = 8–17x</strong><br/>Payback period: <strong style="color:var(--gold);">6–9 months</strong></p>
+    </div>
+    <div class="card">
+      <div class="card-title">Remittance + Neobank LTV (36 months)</div>
+      <div class="card-value">$340–$520</div>
+      <div class="card-sub">Adds: $60–120 neobank ARPU (card interchange, savings product, credit) · 40% recipient conversion · 50% 12-mo card retention</div>
+      <br/>
+      <p style="font-size:12px;">At blended CAC $18–28: <strong style="color:var(--green);">LTV:CAC = 15–29x</strong><br/>Payback period: <strong style="color:var(--gold);">4–6 months</strong></p>
+    </div>
+  </div>
+
+  <div class="chart-wrap">
+    <div class="chart-title">LTV Build — Remittance Core vs. Neobank Layer ($, Cumulative 36-Month Cohort)</div>
+    <canvas id="ltvChart" height="110"></canvas>
+  </div>
+
+  <h3>Targeted Returns Summary</h3>
+
+  <div class="scenario-table">
+    <div class="scenario-header">
+      <span>Metric</span>
+      <span>Bear</span>
+      <span>Base</span>
+      <span>Bull</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">Blended CAC</span>
+      <span class="bear">$35</span>
+      <span class="base">$24</span>
+      <span class="bull">$16</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">LTV:CAC (core only)</span>
+      <span class="bear">5–7x</span>
+      <span class="base">9–13x</span>
+      <span class="bull">15–20x</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">LTV:CAC (with neobank)</span>
+      <span class="bear">8–10x</span>
+      <span class="base">15–22x</span>
+      <span class="bull">25–35x</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Payback Period</span>
+      <span class="bear">12–18 mo</span>
+      <span class="base">6–9 mo</span>
+      <span class="bull">3–5 mo</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">Year 1 New Senders (CA3)</span>
+      <span class="bear">8,000</span>
+      <span class="base">22,000</span>
+      <span class="bull">45,000</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Year 1 GTV ($M)</span>
+      <span class="bear">$14M</span>
+      <span class="base">$38M</span>
+      <span class="bull">$80M</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">Year 1 Revenue ($M @ ~1% TR)</span>
+      <span class="bear">$0.14M</span>
+      <span class="base">$0.38M</span>
+      <span class="bull">$0.80M</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Marketing Investment Required</span>
+      <span class="bear">$280K</span>
+      <span class="base">$528K</span>
+      <span class="bull">$720K</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">The Neobank Multiplier Thesis</div>
+    <p>My Lauder field research found that only ~3% of remittance recipients in El Salvador keep funds in a bank account, despite 60% of flows arriving via bank deposit. This is not a product failure — it is a trust and access failure. The first financial product a recipient trusts after remittances is the one they use for everything else. TapTapSend has a structural opportunity to be that product, which is why the neobank LTV multiplier (1.8–2x) is not theoretical — it is how Nubank built to 7x revenue multiple vs. Remitly's 2.5x.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 04 · 90-DAY PLAN
+══════════════════════════════════════ -->
+<section id="90days">
+  <div class="section-label">04 · 90-Day Activation Plan</div>
+  <h2>Day-by-Day Execution Framework</h2>
+
+  <p>Three phases, each with a distinct mandate and clear deliverables. Each phase gates the next: if Day 30 diagnostics reveal a payout rail gap or a CAC assumption is broken, Phase 2 priorities shift accordingly.</p>
+
+  <div class="phase-timeline">
+    <div class="phase-block p1">
+      <div class="phase-tag">Days 1–30</div>
+      <h3>Diagnose & Design</h3>
+      <ul class="task-list">
+        <li><strong>Sender audit:</strong> Pull cohort data on existing CA3 senders — frequency, avg ticket, drop-off points, re-send rate. Identify where the funnel leaks.</li>
+        <li><strong>Payout rail audit:</strong> Map every bank/wallet option in SV, GT, HN. Identify gaps vs. top 5 recipient institutions.</li>
+        <li><strong>Competitive pricing sweep:</strong> Mystery shop Western Union, MoneyGram, Remitly, Wise on 5 CA3 corridors. Map full fee + FX spread picture.</li>
+        <li><strong>Community mapping:</strong> Identify 20 target community orgs/churches/grocery stores in LA + Houston. Schedule meetings weeks 3–4.</li>
+        <li><strong>Metric baseline:</strong> Lock CAC, LTV, send frequency, and D30/D90 retention baselines from current cohorts.</li>
+        <li><strong>GTM brief:</strong> Draft full channel strategy, creative brief, and partnership term sheet templates by Day 28.</li>
+      </ul>
+    </div>
+    <div class="phase-block p2">
+      <div class="phase-tag">Days 31–60</div>
+      <h3>Pilot & Calibrate</h3>
+      <ul class="task-list">
+        <li><strong>El Salvador go-live:</strong> Activate 5 grocery store partnerships + 3 church pilots in LA. Measure CAC daily vs. target $20.</li>
+        <li><strong>Creator program launch:</strong> Onboard 10 micro-influencers. Brief on authentic storytelling (not ad reads). First content live by Day 40.</li>
+        <li><strong>Payout expansion:</strong> Close at least 2 new payout partnerships in SV (mobile wallet priority — Tigo Money or equivalent).</li>
+        <li><strong>Guatemala design:</strong> Based on SV learnings, adapt GTM brief for Guatemala. Begin community org outreach in Houston + Dallas.</li>
+        <li><strong>WhatsApp notification loop:</strong> Ship recipient notification feature. Track app download rate from notification link.</li>
+        <li><strong>Weekly CAC review:</strong> Every Monday, review channel-level CAC. Kill any channel running &gt;2x target. Double down on channels &lt;50% of target.</li>
+      </ul>
+    </div>
+    <div class="phase-block p3">
+      <div class="phase-tag">Days 61–90</div>
+      <h3>Scale & Build Roadmap</h3>
+      <ul class="task-list">
+        <li><strong>Guatemala activation:</strong> Launch sender-side community program in Houston + Dallas. Target 500 new GT senders in first 30 days post-launch.</li>
+        <li><strong>Honduras scoping:</strong> Complete regulatory and payout rail assessment. Design mobile wallet-first GTM. Recruiting for in-country ops.</li>
+        <li><strong>Neobank/card partnership:</strong> Identify 2–3 potential BIN sponsors or neobank partnerships in SV (Banco Agrícola digital arm, Chivo successor infrastructure). Draft term sheet.</li>
+        <li><strong>90-day results readout:</strong> CAC by channel, LTV:CAC ratio, cohort D30/D60/D90 retention, GTV vs. target. Present to leadership with Year 1 forecast update.</li>
+        <li><strong>Year 1 plan:</strong> Finalize budget, headcount, and corridor expansion sequence for board approval.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Key Capabilities I'd Be Working Towards</h3>
+  <p>The goal in 90 days is to operate lean and learn fast — not to staff a team. Most of what needs to happen in the first quarter is relationship work, data instrumentation, and corridor diagnostics that one person with the right background can drive. The table below reflects the capabilities the role requires, how I'd approach building or accessing each one, and what cross-functional support would be helpful along the way.</p>
+  <table>
+    <thead>
+      <tr><th>Capability</th><th>Approach</th><th>Cross-functional need</th><th>Why It Matters</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Community & diaspora partnerships</strong></td>
+        <td>Lead directly — grocery store, church, and org outreach in sender metros. Background in this community is the starting point.</td>
+        <td>Marketing support for co-branded materials; legal review of partnership terms</td>
+        <td>Trust in CA3 corridors is built through community relationships, not digital ads. This is the highest-leverage early activity.</td>
+      </tr>
+      <tr>
+        <td><strong>CAC/LTV analytics</strong></td>
+        <td>Build the measurement framework in Week 1 and own it throughout. Need data access and ideally a BI tool to track channel-level performance daily.</td>
+        <td>Data/analytics team to instrument and pull cohort reporting; existing growth tooling</td>
+        <td>Channel decisions need to be made weekly. Without clean CAC tracking from the start, it's hard to know what's working until too late to course-correct.</td>
+      </tr>
+      <tr>
+        <td><strong>Payout rail expansion (SV/GT/HN)</strong></td>
+        <td>Scope the gaps, prioritize by corridor impact, and build the business case. Execution sits with product and engineering.</td>
+        <td>Product/engineering bandwidth to add payout partners; compliance for new partner onboarding</td>
+        <td>Sender acquisition stalls if recipients can't receive easily. Mobile wallet coverage in rural Honduras and Guatemala is likely the binding constraint.</td>
+      </tr>
+      <tr>
+        <td><strong>Creator / influencer program</strong></td>
+        <td>Identify and brief diaspora creators, set performance terms, review content for authenticity. Production and paid amplification can be handled by existing marketing team.</td>
+        <td>Marketing team for paid amplification; legal for disclosure and terms</td>
+        <td>Diaspora micro-creators (5K–50K followers) are among the most cost-efficient acquisition channels — but only if the content feels genuine, not like a standard ad read.</td>
+      </tr>
+      <tr>
+        <td><strong>In-country relationships (El Salvador)</strong></td>
+        <td>Leverage existing networks from field research (2024–25) and deepen through the activation work itself — payout partners, community orgs, BCR contacts.</td>
+        <td>Compliance/regulatory team for BCR interface; local counsel as needed</td>
+        <td>Relationships built in Year 1 are the foundation for the neobank thesis in Year 2. In 90 days this is maintenance and early relationship-building, not a formal country presence.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Budget Framework (90-Day)</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Community & Partnerships</div>
+      <div class="card-value">$120K</div>
+      <div class="card-sub">Org sponsorships, church activations, grocery incentive program, event costs</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Creator / Influencer Program</div>
+      <div class="card-value">$80K</div>
+      <div class="card-sub">10–20 creators, flat fee + performance CPA, creative production</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Paid Performance (Retargeting Only)</div>
+      <div class="card-value">$60K</div>
+      <div class="card-sub">Meta retargeting of warm audiences; no cold acquisition spend in Phase 1</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Product / Tech (Payout Rail + WhatsApp)</div>
+      <div class="card-value">$150K</div>
+      <div class="card-sub">Engineering for new payout partners, notification feature, app localization</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Research & Competitive Intel</div>
+      <div class="card-value">$20K</div>
+      <div class="card-sub">Mystery shopping, community surveys, field research (SV + GT)</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Total 90-Day Investment</div>
+      <div class="card-value" style="color:var(--gold);">~$430K</div>
+      <div class="card-sub">Targeting 15–25K new senders in 90 days at blended CAC &lt;$25</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 05 · KPI DASHBOARD
+══════════════════════════════════════ -->
+<section id="kpis">
+  <div class="section-label">05 · KPI Dashboard</div>
+  <h2>What Good Looks Like — by Milestone</h2>
+
+  <p>Every KPI has a owner, a measurement cadence, and a decision trigger. If a KPI is yellow by Day 30, we adjust. If it is red by Day 60, we escalate or stop the channel.</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <span class="phase-badge badge-d30">Day 30 Gate</span>
+      <div class="kpi-row"><span class="k-name">Channels identified</span><span class="k-val green">5+</span></div>
+      <div class="kpi-row"><span class="k-name">CAC baseline locked</span><span class="k-val green">Yes</span></div>
+      <div class="kpi-row"><span class="k-name">Payout rail gaps mapped</span><span class="k-val green">100%</span></div>
+      <div class="kpi-row"><span class="k-name">Community orgs pipeline</span><span class="k-val gold">20+</span></div>
+      <div class="kpi-row"><span class="k-name">Competitive pricing sweep</span><span class="k-val green">Done</span></div>
+      <div class="kpi-row"><span class="k-name">GTM brief approved</span><span class="k-val green">Day 28</span></div>
+    </div>
+    <div class="kpi-card">
+      <span class="phase-badge badge-d60">Day 60 Gate</span>
+      <div class="kpi-row"><span class="k-name">New SV senders (pilot)</span><span class="k-val gold">500–1,000</span></div>
+      <div class="kpi-row"><span class="k-name">Blended CAC (pilot)</span><span class="k-val green">&lt;$30</span></div>
+      <div class="kpi-row"><span class="k-name">D30 retention (pilot cohort)</span><span class="k-val green">&gt;55%</span></div>
+      <div class="kpi-row"><span class="k-name">Creator program launched</span><span class="k-val green">10 active</span></div>
+      <div class="kpi-row"><span class="k-name">New payout partners (SV)</span><span class="k-val gold">2+</span></div>
+      <div class="kpi-row"><span class="k-name">Recipient notif. download %</span><span class="k-val gold">&gt;12%</span></div>
+    </div>
+    <div class="kpi-card">
+      <span class="phase-badge badge-d90">Day 90 Gate</span>
+      <div class="kpi-row"><span class="k-name">Total new CA3 senders</span><span class="k-val gold">5,000–10,000</span></div>
+      <div class="kpi-row"><span class="k-name">Blended CAC (all channels)</span><span class="k-val green">&lt;$25</span></div>
+      <div class="kpi-row"><span class="k-name">LTV:CAC (early estimate)</span><span class="k-val green">&gt;10x</span></div>
+      <div class="kpi-row"><span class="k-name">GTV run rate (CA3)</span><span class="k-val gold">$5–8M/mo</span></div>
+      <div class="kpi-row"><span class="k-name">D60 retention</span><span class="k-val green">&gt;45%</span></div>
+      <div class="kpi-row"><span class="k-name">GT activation plan approved</span><span class="k-val green">Yes</span></div>
+    </div>
+  </div>
+
+  <h3>North Star Metric + Supporting Indicators</h3>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Acquisition Funnel — Target State at Day 90 (El Salvador Pilot)</div>
+    <canvas id="funnelChart" height="90"></canvas>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Metric</th><th>Category</th><th>Owner</th><th>Cadence</th><th>Target (Day 90)</th><th>Decision Trigger</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td><strong>GTV per active sender (monthly)</strong></td>
+        <td>North Star</td>
+        <td>Head of CA Growth</td>
+        <td>Weekly</td>
+        <td>$160–200</td>
+        <td>If &lt;$120 → investigate corridor mix</td>
+      </tr>
+      <tr>
+        <td>Blended CAC</td>
+        <td>Acquisition</td>
+        <td>Growth</td>
+        <td>Daily</td>
+        <td>&lt;$25</td>
+        <td>If &gt;$35 → kill lowest-performing channel</td>
+      </tr>
+      <tr>
+        <td>D30 retention rate</td>
+        <td>Retention</td>
+        <td>Product</td>
+        <td>Weekly</td>
+        <td>&gt;55%</td>
+        <td>If &lt;40% → UX/onboarding audit</td>
+      </tr>
+      <tr>
+        <td>LTV:CAC ratio (est.)</td>
+        <td>Economics</td>
+        <td>Finance</td>
+        <td>Monthly</td>
+        <td>&gt;10x</td>
+        <td>If &lt;6x → pause scale, fix unit economics</td>
+      </tr>
+      <tr>
+        <td>Community channel % of new users</td>
+        <td>Channel mix</td>
+        <td>Partnerships</td>
+        <td>Weekly</td>
+        <td>&gt;40%</td>
+        <td>If &lt;25% → increase community investment</td>
+      </tr>
+      <tr>
+        <td>Payout success rate</td>
+        <td>Operations</td>
+        <td>Product</td>
+        <td>Daily</td>
+        <td>&gt;98%</td>
+        <td>If &lt;95% → escalate to payout partner</td>
+      </tr>
+      <tr>
+        <td>Recipient app download rate (from notification)</td>
+        <td>Neobank funnel</td>
+        <td>Product</td>
+        <td>Weekly</td>
+        <td>&gt;15%</td>
+        <td>If &lt;8% → test WhatsApp message copy</td>
+      </tr>
+      <tr>
+        <td>NPS (sender-side)</td>
+        <td>Satisfaction</td>
+        <td>CX</td>
+        <td>Monthly</td>
+        <td>&gt;60</td>
+        <td>If &lt;45 → CX + product review</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 06 · SCENARIOS
+══════════════════════════════════════ -->
+<section id="scenarios">
+  <div class="section-label">06 · Scenario Planning</div>
+  <h2>Bear / Base / Bull — Year 1 Financial Outcomes</h2>
+
+  <p>Scenarios are built from the CAC and acquisition volume assumptions in Section 03. The key variable is channel mix: if community partnerships scale as modeled, blended CAC stays below $25. If they underperform and paid acquisition fills the gap, CAC rises to $35+ and the economics invert.</p>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Year 1 Revenue Scenarios — CA3 Combined ($M)</div>
+    <canvas id="scenarioChart" height="100"></canvas>
+  </div>
+
+  <div class="scenario-table" style="margin-top:28px;">
+    <div class="scenario-header">
+      <span>Assumption</span>
+      <span>Bear Case</span>
+      <span>Base Case</span>
+      <span>Bull Case</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">CAC blend</span>
+      <span class="bear">$35 (paid-heavy)</span>
+      <span class="base">$24 (mixed)</span>
+      <span class="bull">$16 (community-led)</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">D90 new senders</span>
+      <span class="bear">3,000</span>
+      <span class="base">8,000</span>
+      <span class="bull">18,000</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">YE new senders (CA3)</span>
+      <span class="bear">8,000</span>
+      <span class="base">22,000</span>
+      <span class="bull">45,000</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Avg sends / user / yr</span>
+      <span class="bear">7</span>
+      <span class="base">9</span>
+      <span class="bull">11</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">Avg ticket size</span>
+      <span class="bear">$170</span>
+      <span class="base">$190</span>
+      <span class="bull">$210</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Gross GTV ($M)</span>
+      <span class="bear">$9.5M</span>
+      <span class="base">$37.6M</span>
+      <span class="bull">$103.9M</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">Revenue @ ~1% TR ($M)</span>
+      <span class="bear">$0.10M</span>
+      <span class="base">$0.38M</span>
+      <span class="bull">$1.04M</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Marketing spend ($M)</span>
+      <span class="bear">$0.28M</span>
+      <span class="base">$0.53M</span>
+      <span class="bull">$0.72M</span>
+    </div>
+    <div class="scenario-row">
+      <span class="metric">Contribution margin</span>
+      <span class="bear">Negative</span>
+      <span class="base">~(28%)</span>
+      <span class="bull">+31%</span>
+    </div>
+    <div class="scenario-row alt">
+      <span class="metric">Key assumption</span>
+      <span class="bear">Community partners underdeliver; paid fills gap</span>
+      <span class="base">Community ramps by Day 45; 2 new payout rails</span>
+      <span class="bull">Referral loop activates; neobank seeds in Q3</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Year 2 Unlock</div>
+    <p>The real value is not Year 1 revenue — it is the cohort quality. If Day 90 retention is above 45% and community channels drive 35%+ of acquisition, we have built a defensible, low-CAC growth engine. By Year 2, that cohort compounds: referrals from Year 1 senders become the cheapest acquisition channel, and 10–15% of Year 1 recipients convert to a card/savings product, unlocking the neobank LTV multiplier. The Year 2 bull case revenue is $8–12M, with contribution margins turning positive.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION 07 · RISK REGISTER
+══════════════════════════════════════ -->
+<section id="risk">
+  <div class="section-label">07 · Risk Register</div>
+  <h2>Key Risks & Mitigations</h2>
+
+  <div class="risk-header">
+    <span>Risk</span>
+    <span>Probability</span>
+    <span>Impact</span>
+    <span>Mitigation</span>
+  </div>
+  <div class="risk-row">
+    <span class="r-risk"><strong>Community partnerships slower to activate than modeled</strong> — church/org trust takes 60–90 days to build, not 30</span>
+    <span class="r-prob med">Medium</span>
+    <span class="r-impact med">Medium</span>
+    <span class="r-mit">Start outreach Week 1, not Week 3. Hire community partnerships lead in first 2 weeks. Have grocery store network as backup Day 30 lever.</span>
+  </div>
+  <div class="risk-row alt">
+    <span class="r-risk"><strong>Payout rail gaps in Guatemala/Honduras</strong> — bank coverage drops below 60% in rural areas</span>
+    <span class="r-prob high">High</span>
+    <span class="r-impact high">High</span>
+    <span class="r-mit">Prioritize mobile wallet integration (Tigo Money, Claro) as Day 1 product requirement for Honduras. Do not launch GT/HN until payout coverage is ≥80%.</span>
+  </div>
+  <div class="risk-row">
+    <span class="r-risk"><strong>CAC inflation if community channels underperform</strong> — paid acquisition fills gap, unit economics invert</span>
+    <span class="r-prob med">Medium</span>
+    <span class="r-impact high">High</span>
+    <span class="r-mit">Hard CAC ceiling of $40 per channel. Weekly review kills any channel running 2x+ target. No paid cold acquisition in Phase 1 — retargeting only.</span>
+  </div>
+  <div class="risk-row alt">
+    <span class="r-risk"><strong>Regulatory change in El Salvador</strong> — post-Bukele Chivo successor infrastructure creates new compliance requirements</span>
+    <span class="r-prob low">Low-Med</span>
+    <span class="r-impact med">Medium</span>
+    <span class="r-mit">Maintain active relationship with BCR (El Salvador central bank). El Salvador's dollarization and US FX regime reduce currency risk. Compliance counsel on retainer.</span>
+  </div>
+  <div class="risk-row">
+    <span class="r-risk"><strong>Western Union / Walmart retaliates with fee cuts in CA3</strong> — incumbent pricing response to digital competitive threat</span>
+    <span class="r-prob low">Low</span>
+    <span class="r-impact med">Medium</span>
+    <span class="r-mit">TapTapSend's community trust strategy is not primarily price-driven. Price parity (not undercutting) is the goal — if WU cuts fees, community relationships remain differentiated.</span>
+  </div>
+  <div class="risk-row alt">
+    <span class="r-risk"><strong>Neobank partnership takes longer than expected</strong> — BIN sponsorship or banking-as-a-service partner not secured by Q3</span>
+    <span class="r-prob med">Medium</span>
+    <span class="r-impact low">Low-Med</span>
+    <span class="r-mit">Neobank is Year 2 thesis, not 90-day requirement. If partner not secured by Day 90, the base case still works on remittance-only economics.</span>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="author">Prepared by <span>Manuel Figueroa</span> · Head of Central America Growth · TapTapSend</div>
+  <div class="date">March 2026 · Based on World Bank, IDB, Lauder Field Research (El Salvador, 2025), TapTapSend Public Licensing Data</div>
+</div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════════════════════════
+     CHARTS
+══════════════════════════════════════ -->
+<script>
+const NAVY2 = '#162236';
+const GREEN = '#34d399';
+const GREEN2 = '#10b981';
+const GOLD = '#f59e0b';
+const RED = '#f87171';
+const BLUE = '#60a5fa';
+const PURPLE = '#a78bfa';
+const MUTED = '#94a3b8';
+const gridColor = 'rgba(148,163,184,0.08)';
+
+Chart.defaults.color = MUTED;
+Chart.defaults.font.family = "'Courier New', monospace";
+Chart.defaults.font.size = 11;
+
+// ── TAM CHART ──
+new Chart(document.getElementById('tamChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Guatemala', 'Honduras', 'El Salvador'],
+    datasets: [
+      {
+        label: 'Remittance Flow ($B)',
+        data: [21.8, 9.3, 8.2],
+        backgroundColor: [GREEN, BLUE, PURPLE],
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => ` $${ctx.parsed.x}B` }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: gridColor },
+        ticks: { callback: v => `$${v}B` }
+      },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+// ── SOM CHART ──
+new Chart(document.getElementById('somChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1 (90d)', 'Q2', 'Q3', 'Q4', 'Year 2', 'Year 3'],
+    datasets: [
+      {
+        label: 'Bear ($M)',
+        data: [0.01, 0.02, 0.04, 0.05, 0.18, 0.4],
+        backgroundColor: 'rgba(248,113,113,0.6)',
+        borderRadius: 3
+      },
+      {
+        label: 'Base ($M)',
+        data: [0.03, 0.08, 0.16, 0.22, 1.2, 4.1],
+        backgroundColor: 'rgba(245,158,11,0.6)',
+        borderRadius: 3
+      },
+      {
+        label: 'Bull ($M)',
+        data: [0.08, 0.22, 0.52, 0.88, 4.8, 14.2],
+        backgroundColor: 'rgba(52,211,153,0.7)',
+        borderRadius: 3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } },
+      tooltip: { callbacks: { label: ctx => ` $${ctx.parsed.y}M` } }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, ticks: { callback: v => `$${v}M` } }
+    }
+  }
+});
+
+// ── CHANNEL CHART ──
+new Chart(document.getElementById('channelChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Community Referral', 'Grocery / In-Person', 'Creator / Influencer', 'Church / Org', 'Paid (Retargeting)'],
+    datasets: [
+      {
+        label: 'Target CAC ($)',
+        data: [12, 20, 30, 15, 47],
+        backgroundColor: [GREEN, BLUE, PURPLE, GOLD, RED],
+        borderRadius: 4,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Volume Share (%)',
+        data: [30, 25, 20, 15, 10],
+        backgroundColor: 'rgba(255,255,255,0.08)',
+        borderColor: 'rgba(255,255,255,0.3)',
+        borderWidth: 1,
+        borderRadius: 4,
+        type: 'bar',
+        yAxisID: 'y2'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, padding: 16 } }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, ticks: { callback: v => `$${v}` }, title: { display: true, text: 'CAC ($)' } },
+      y2: { position: 'right', grid: { display: false }, ticks: { callback: v => `${v}%` }, title: { display: true, text: 'Volume Share' } }
+    }
+  }
+});
+
+// ── CAC CHART ──
+new Chart(document.getElementById('cacChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Community\nReferral', 'Church /\nOrg', 'Grocery /\nIn-Person', 'Creator /\nInfluencer', 'Paid\nRetargeting'],
+    datasets: [{
+      label: 'Min CAC',
+      data: [8, 10, 15, 25, 35],
+      backgroundColor: 'rgba(52,211,153,0.5)',
+      borderRadius: 3
+    }, {
+      label: 'Max CAC',
+      data: [15, 20, 25, 35, 60],
+      backgroundColor: 'rgba(245,158,11,0.5)',
+      borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, ticks: { callback: v => `$${v}` } }
+    }
+  }
+});
+
+// ── LTV CHART ──
+new Chart(document.getElementById('ltvChart'), {
+  type: 'line',
+  data: {
+    labels: ['M1', 'M3', 'M6', 'M9', 'M12', 'M18', 'M24', 'M30', 'M36'],
+    datasets: [
+      {
+        label: 'Remittance Only — Base ($)',
+        data: [16, 44, 85, 122, 157, 210, 248, 275, 295],
+        borderColor: BLUE,
+        backgroundColor: 'rgba(96,165,250,0.08)',
+        tension: 0.4,
+        fill: true
+      },
+      {
+        label: 'Remittance + Neobank ($)',
+        data: [16, 44, 90, 140, 192, 290, 360, 420, 475],
+        borderColor: GREEN,
+        backgroundColor: 'rgba(52,211,153,0.08)',
+        tension: 0.4,
+        fill: true
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } },
+      tooltip: { callbacks: { label: ctx => ` $${ctx.parsed.y} cumulative` } }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, ticks: { callback: v => `$${v}` } }
+    }
+  }
+});
+
+// ── FUNNEL CHART ──
+new Chart(document.getElementById('funnelChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Awareness\n(impressions)', 'App\nDownload', 'Onboarding\nComplete', 'First Send', 'Second\nSend (D30)'],
+    datasets: [{
+      label: 'Users',
+      data: [200000, 12000, 7200, 4800, 2640],
+      backgroundColor: [
+        'rgba(96,165,250,0.5)',
+        'rgba(167,139,250,0.5)',
+        'rgba(245,158,11,0.5)',
+        'rgba(52,211,153,0.7)',
+        'rgba(52,211,153,1)'
+      ],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.parsed.y.toLocaleString()} users` } }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, ticks: { callback: v => v >= 1000 ? `${v/1000}K` : v } }
+    }
+  }
+});
+
+// ── SCENARIO CHART ──
+new Chart(document.getElementById('scenarioChart'), {
+  type: 'line',
+  data: {
+    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+    datasets: [
+      {
+        label: 'Bear Case ($M)',
+        data: [0.01, 0.02, 0.04, 0.05],
+        borderColor: RED,
+        backgroundColor: 'rgba(248,113,113,0.08)',
+        tension: 0.3,
+        fill: true,
+        borderDash: [4,3]
+      },
+      {
+        label: 'Base Case ($M)',
+        data: [0.03, 0.08, 0.16, 0.22],
+        borderColor: GOLD,
+        backgroundColor: 'rgba(245,158,11,0.08)',
+        tension: 0.3,
+        fill: true
+      },
+      {
+        label: 'Bull Case ($M)',
+        data: [0.08, 0.22, 0.52, 0.88],
+        borderColor: GREEN,
+        backgroundColor: 'rgba(52,211,153,0.08)',
+        tension: 0.3,
+        fill: true
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14 } },
+      tooltip: { callbacks: { label: ctx => ` $${ctx.parsed.y}M` } }
+    },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { color: gridColor }, ticks: { callback: v => `$${v}M` } }
+    }
+  }
+});
+</script>
+</body>
+</html>
